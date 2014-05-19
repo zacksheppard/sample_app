@@ -7,6 +7,7 @@ describe "Static Pages" do
 			page.should have_selector('h1', :text => 'Sample App') 
 		end
 
+		# GOT AN ERROR: Commented out to fix later
 		# it "should have the right title" do
 		# 	visit '/static_pages/home'
 		# 	page.should have_selector('title', :text => 'Ruby on Rails Tutorial Sample App | Home') 
@@ -19,6 +20,7 @@ describe "Static Pages" do
 			expect(page).to have_selector('h1', :text => 'Help Page') 
 		end
 
+		# GOT AN ERROR: Commented out to fix later
 		# it "should have the right title" do
 		# 	visit '/static_pages/help'
 		# 	expect(page).to have_selector('title', :text => "Ruby on Rails Tutorial Sample App | Help") 
@@ -31,6 +33,7 @@ describe "Static Pages" do
 			expect(page).to have_selector('h1', :text => 'About us') 
 		end
 		
+		# GOT AN ERROR: Commented out to fix later
 		# it "should have the right title" do
 		# 	visit '/static_pages/about'
 		# 	expect(page).to have_selector('title', :text => "Ruby on Rails Tutorial Sample App | About") 
@@ -43,6 +46,7 @@ describe "Static Pages" do
 			expect(page).to have_selector('h1', :text => 'Contact us') 
 		end
 		
+		# GOT AN ERROR: Commented out to fix later
 		# it "should have the right title" do
 		# 	visit '/static_pages/about'
 		# 	expect(page).to have_selector('title', :text => "Ruby on Rails Tutorial Sample App | Contact") 
