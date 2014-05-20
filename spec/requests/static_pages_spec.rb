@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Static Pages" do
 	describe "Home page" do
 		it "should have the content 'Sample App'" do
-			visit '/static_pages/home'
+			visit root_path
 			page.should have_selector('h1', :text => 'Sample App') 
 		end
 
@@ -16,7 +16,7 @@ describe "Static Pages" do
 
 	describe "Help Page" do
 		it "should have the content 'Help' and FAQs" do
-			visit '/static_pages/help'
+			visit help_path
 			expect(page).to have_selector('h1', :text => 'Help Page') 
 		end
 
@@ -29,7 +29,7 @@ describe "Static Pages" do
 
 	describe "About Page" do
 		it "should have the content 'About us'" do
-			visit '/static_pages/about'
+			visit about_path
 			expect(page).to have_selector('h1', :text => 'About us') 
 		end
 		
@@ -42,7 +42,7 @@ describe "Static Pages" do
 
 	describe "Contact Page" do
 		it "should have the content 'Contact us'" do
-			visit '/static_pages/contact'
+			visit contact_path
 			expect(page).to have_selector('h1', :text => 'Contact us') 
 		end
 		
