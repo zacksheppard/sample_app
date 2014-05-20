@@ -1,55 +1,32 @@
 require 'spec_helper'
 
 describe "Static Pages" do
+
+	subject { page }
+
 	describe "Home page" do
-		it "should have the content 'Sample App'" do
-			visit root_path
-			page.should have_selector('h1', :text => 'Sample App') 
-		end
-
-		# GOT AN ERROR: Commented out to fix later
-		# it "should have the right title" do
-		# 	visit '/static_pages/home'
-		# 	page.should have_selector('title', :text => 'Ruby on Rails Tutorial Sample App | Home') 
-		# end
-	end 
-
-	describe "Help Page" do
-		it "should have the content 'Help' and FAQs" do
-			visit help_path
-			expect(page).to have_selector('h1', :text => 'Help Page') 
-		end
-
-		# GOT AN ERROR: Commented out to fix later
-		# it "should have the right title" do
-		# 	visit '/static_pages/help'
-		# 	expect(page).to have_selector('title', :text => "Ruby on Rails Tutorial Sample App | Help") 
-		# end
+		before { visit root_path }
+		it { should have_content('Sample App') }
+		it { should have_title(full_title('')) }
+		it { should_not have_title('| Home') }
+	end
+	
+	describe "Help page" do
+		before { visit help_path }
+		it { should have_content('Help Page') }
+		it { should have_title( full_title('Help')) } 
+	end
+	
+	describe "About page" do
+		before { visit about_path }
+		it { should have_content('About us') }
+		it { should have_title(full_title('About us')) } 
 	end
 
-	describe "About Page" do
-		it "should have the content 'About us'" do
-			visit about_path
-			expect(page).to have_selector('h1', :text => 'About us') 
-		end
-		
-		# GOT AN ERROR: Commented out to fix later
-		# it "should have the right title" do
-		# 	visit '/static_pages/about'
-		# 	expect(page).to have_selector('title', :text => "Ruby on Rails Tutorial Sample App | About") 
-		# end
+	describe "Contact page" do
+		before { visit contact_path }
+		it { should have_content('Contact us') }
+		it { should have_title(full_title('Contact')) }
 	end
 
-	describe "Contact Page" do
-		it "should have the content 'Contact us'" do
-			visit contact_path
-			expect(page).to have_selector('h1', :text => 'Contact us') 
-		end
-		
-		# GOT AN ERROR: Commented out to fix later
-		# it "should have the right title" do
-		# 	visit '/static_pages/about'
-		# 	expect(page).to have_selector('title', :text => "Ruby on Rails Tutorial Sample App | Contact") 
-		# end
-	end
 end
