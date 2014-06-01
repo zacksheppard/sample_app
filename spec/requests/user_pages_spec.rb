@@ -25,7 +25,7 @@ describe "User pages" do
     			fill_in "Name",			with: "Example User"
     			fill_in "Email",		with: "user@example.com"
     			fill_in "Password",		with: "foobar"
-    			fill_in "Password confirmation",	with: "foobar"
+    			fill_in "Confirm password",	with: "foobar"
     		end
 
     		it "should create a user" do
@@ -42,4 +42,33 @@ describe "User pages" do
 		it {should have_title(user.name)}
 	end
 
+    describe "edit" do
+        let(:user) {FactoryGirl.create(:user)}
+        before do 
+            sign_in user
+            visit edit_user_path(user)
+        end
+
+        describe "page" do
+            it { should have_content('Update your profile') }
+            it { should have_title(full_title('Edit')) }
+            it { should have_link('change', href: 'http://gravatar.com/emails')}
+        end
+
+        describe "with valid information" do
+            let(:new_name) {"New name"}
+            let(:new_email) {"new@example.com"}
+            before do
+                # fill_in "Name",         with: new_name
+                fill_in "Email",        with: new_email
+                fill_in "Password",     with: user.password
+                fill_in "Confirm password", with: user.password
+                click_button "Save changes"
+            end
+
+            
+            it { should have_selector('div.alert.alert-success')}
+            it {should have_link('Sign out', href: signout_path)}
+        end
+    end
  end
